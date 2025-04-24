@@ -1,0 +1,18 @@
+BUndler 
+
+its is tool  which you send javascript html css images TypeScript Sass etc
+
+the bundler is used to modify the  a web freiendly bundler
+*we can run  like local server manage dependenscies deploy etc
+
+
+we are going to use WebPack
+ why web pack ??
+ most popular
+ handle most of our needs
+ good documentain
+ good comunity
+ well maintained
+ hard to configure
+
+vv 
