@@ -1,0 +1,52 @@
+there are 4 properties to transform object
+    *scale
+    *roatation
+    *position
+    *quaternion
+
+
+    *** the perspectivecamera inherit the properties from camera that inherit from object 3d
+    *** mesh also inherit the properties from object3d
+
+    ********************************matrices******************* 
+
+    *** move objects
+    we have 3 proerties 
+    x
+    y
+    z
+
+
+    use mesh.position.x/y/z=value
+
+    
+    and use wherever but you should use before rendering and after creation the mesh
+
+    //VECTOR
+    Vectors in Three.js are mathematical objects used to represent points or directions in 3D space. They are commonly used for operations like positioning, scaling, and rotating objects. The most frequently used vector class is `Vector3`, which represents a 3D vector with x, y, and z components.
+
+    - Vectors can be used to set or manipulate object positions, directions, or transformations.
+    - Example: `mesh.position` is a `Vector3` object that defines the position of a mesh in 3D space.
+    - Operations like addition, subtraction, normalization, and cross products can be performed using vector methods.
+
+    // mesh.position.lenght()
+    the distance between center of the scene and position of the object
+
+    //mesh.position.distanceTo(camera.position)
+    the distance between camera and the object
+
+    //Normalize
+    when we do the normalize it reducecs the length to 1 no matter the object distance is what
+    mesh.position.normalize()
+
+
+    set
+    giving position in one line using set rather than using x y z seperately
+
+    mesh.position.set(x,y,z)
+
+    Axes Helper
+    for positioning the object it helps more
+    by creating const Axeshelper = new Three.AxesHelper(we can passs [parameter])
+    scene.add(Axeshelper)
+    paramete reprsents size of the helper axis
