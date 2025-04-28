@@ -23,6 +23,17 @@ console.log(mesh.position.normalize());
   scene.add(AxesHelper);
 scene.add(mesh);
 
+//Scale
+// mesh.scale.x=1;
+// mesh.scale.y= 0.7;
+// mesh.scale.z= 0.3;
+mesh.scale.set(1, 0.7, 0.3);
+
+// Rotation
+mesh.rotation.reorder('YXZ');
+mesh.rotation.y=Math.PI/2 ;
+mesh.rotation.x =Math.PI*0.25;
+
 const sizes= {
     width: 800,
     height: 600

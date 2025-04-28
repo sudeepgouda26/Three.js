@@ -50,3 +50,50 @@ there are 4 properties to transform object
     by creating const Axeshelper = new Three.AxesHelper(we can passs [parameter])
     scene.add(Axeshelper)
     paramete reprsents size of the helper axis
+
+    //scale
+    /**
+     * The `scale` property in Three.js is used to control the scaling of an object
+     * along the x, y, and z axes. It is represented as a `Vector3` object, where
+     * each component corresponds to the scale factor for the respective axis.
+     *
+     * - `scale.x`: Controls the scaling along the x-axis.
+     * - `scale.y`: Controls the scaling along the y-axis.
+     * - `scale.z`: Controls the scaling along the z-axis.
+     *
+     * Notes:
+     * - A scale value of `1` means no scaling (default size).
+     * - A scale value greater than `1` enlarges the object along the respective axis.
+     * - A scale value between `0` and `1` shrinks the object along the respective axis.
+     * - A scale value of `0` effectively makes the object invisible along the respective axis.
+     * - Negative scale values can be used to flip the object along the respective axis.
+     *
+     * Example:
+     * ```javascript
+     * object.scale.set(2, 1.5, 1); // Scales the object by 2x on x-axis, 1.5x on y-axis, and keeps z-axis unchanged.
+     * ```
+     */
+
+
+    // Rotation
+    /**
+     * The `rotation` property in Three.js is used to control the rotation of an object
+     * around the x, y, and z axes. It is represented as an `Euler` object, where each
+     * component corresponds to the rotation angle (in radians) for the respective axis.
+     *
+     * - `rotation.x`: Controls the rotation around the x-axis.
+     * - `rotation.y`: Controls the rotation around the y-axis.
+     * - `rotation.z`: Controls the rotation around the z-axis.
+     *
+     * Notes:
+     * - Rotation angles are specified in radians (not degrees).
+     * - The order of rotation is determined by the `Euler` order (default is 'XYZ').
+     * - Changing the rotation order can affect the final orientation of the object.
+     *
+     * Example:
+     * ```javascript
+     * mesh.rotation.x = Math.PI / 4; // Rotates the object 45 degrees around the x-axis.
+     * mesh.rotation.y = Math.PI / 2; // Rotates the object 90 degrees around the y-axis.
+     * ```
+     we can change the order by mesh.rotation.reorder('YXZ');
+     */
