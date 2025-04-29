@@ -1,0 +1,16 @@
+- `requestAnimationFrame` is a method used in JavaScript to create smooth animations.
+- It tells the browser to execute a specified function before the next repaint.
+- In Three.js, `requestAnimationFrame` is commonly used in the render loop to update the scene and camera continuously.
+- Example usage in Three.js:
+    ```javascript
+    function animate() {
+            requestAnimationFrame(animate);
+            // Update objects or animations here
+            renderer.render(scene, camera);
+    }
+    animate();
+    ```
+- It ensures efficient rendering by syncing with the display refresh rate.
+- The purpose of this method is to optimize performance and provide a smoother user experience by leveraging the browser's native capabilities for rendering animations.
+
+this function is called for each frame 
