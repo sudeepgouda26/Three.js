@@ -97,3 +97,28 @@ there are 4 properties to transform object
      * ```
      we can change the order by mesh.rotation.reorder('YXZ');
      */
+
+    // Quaternion
+    /**
+     * The `quaternion` property in Three.js is used to represent the orientation of an object
+     * in 3D space. It is an alternative to using Euler angles for rotation and avoids issues
+     * like gimbal lock.
+     *
+     * - A quaternion is a mathematical representation of rotation that consists of four components:
+     *   `x`, `y`, `z`, and `w`.
+     * - Quaternions are commonly used for smooth interpolations (slerp) and complex rotations.
+     *
+     * Notes:
+     * - Quaternions are more efficient and stable for cumulative rotations compared to Euler angles.
+     * - You can set the quaternion directly or use methods like `setFromAxisAngle` or `setFromEuler`.
+     * - When using quaternions, avoid directly modifying the `rotation` property, as it may lead to conflicts.
+     *
+     * Example:
+     * ```javascript
+     * const axis = new THREE.Vector3(0, 1, 0); // Rotation axis (y-axis)
+     * const angle = Math.PI / 4; // Rotation angle (45 degrees)
+     * mesh.quaternion.setFromAxisAngle(axis, angle); // Sets the quaternion for the rotation
+     * ```
+     */
+
+    camera.lookAt(mesh.position)
