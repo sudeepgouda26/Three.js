@@ -1,0 +1,15 @@
+Orthographic Camera
+- The OrthographicCamera provides a non-perspective view, where objects appear the same size regardless of their distance from the camera.
+- It is useful for 2D scenes or technical visualizations.
+
+Syntax
+- const camera = new THREE.OrthographicCamera(left, right, top, bottom, near, far);
+- left, right, top, bottom: Define the camera's view box.
+- near: Near clipping plane.
+- far: Far clipping plane.
+
+Example
+const camera = new THREE.OrthographicCamera(-10*aspectRatio, 10*aspectRatio, 10, -10, 0.1, 100);
+ use aspect ratio fo more bettter visibility
+
+ const aspectRatio = sizes.width / sizes.height
