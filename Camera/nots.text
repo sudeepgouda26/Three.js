@@ -13,3 +13,31 @@ const camera = new THREE.OrthographicCamera(-10*aspectRatio, 10*aspectRatio, 10,
  use aspect ratio fo more bettter visibility
 
  const aspectRatio = sizes.width / sizes.height
+
+
+Custom Camera
+-
+const cursor ={
+    x:0,
+    y:0
+}
+
+window.addEventListener("mousemove",(dets)=>{
+    cursor.x = dets.clientX /sizes.width - 0.5
+    console.log(cursor.x)
+    cursor.y = -(dets.clientY /sizes.height - 0.5)
+
+})
+
+
+function tick (){
+    renderer.render(scene, camera)
+      camera.position.x =cursor.x *10
+      camera.position.y =cursor.y*10
+      camera.lookAt(mesh.position)
+   
+    window.requestAnimationFrame(tick)
+
+    
+}
+tick()
