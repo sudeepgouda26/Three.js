@@ -41,3 +41,72 @@ function tick (){
     
 }
 tick()
+
+📌 OrbitControls (Three.js)
+✅ What is it?
+OrbitControls lets you move the camera around your 3D scene by clicking, dragging, zooming, or rotating — like orbiting around an object with your mouse.
+
+Without it, the camera stays fixed, and you have to move it manually with code. With OrbitControls, the user can interact and explore the scene smoothly.
+
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+
+const controls = new OrbitControls(camera, renderer.domElement);
+
+✅ What can you do with it?
+
+Rotate: drag the mouse left/right, up/down.
+
+Zoom: scroll the mouse wheel.
+
+Pan (move side-to-side): right-click and drag.
+
+Enable/disable: control what interactions are allowed.
+
+import * as THREE from 'three';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+
+// Scene, camera, renderer setup
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
+const renderer = new THREE.WebGLRenderer();
+renderer.setSize(window.innerWidth, window.innerHeight);
+document.body.appendChild(renderer.domElement);
+
+// Add a cube
+const geometry = new THREE.BoxGeometry();
+const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
+const cube = new THREE.Mesh(geometry, material);
+scene.add(cube);
+
+// Camera position
+camera.position.z = 5;
+
+// Add OrbitControls
+const controls = new OrbitControls(camera, renderer.domElement);
+
+// Animation loop
+function animate() {
+    requestAnimationFrame(animate);
+    controls.update();  // **important!**
+    renderer.render(scene, camera);
+}
+animate();
+
+
+✅ Important Points
+
+Always call controls.update() inside the animation loop.
+
+You can tweak settings, like:
+
+js
+Copy
+Edit
+controls.enableZoom = false;  // disables zooming
+controls.enablePan = false;   // disables panning
+controls.autoRotate = true;   // makes the camera spin automatically
+If you want, I can also provide:
+✅ All the common settings/options you can adjust
+✅ An example with auto-rotation or damping effects
+
+Would you like me to write those next?

@@ -1,11 +1,14 @@
 import './style.css'
 import * as THREE from 'three'
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 
 // Canvas
 const canvas = document.querySelector('canvas.webgl')
 
 // Scene
 const scene = new THREE.Scene()
+
+
 
 
 const cursor ={
@@ -39,6 +42,9 @@ const sizes = {
  * Camera
  */
 const camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height,0.1,100)
+const controls = new OrbitControls(camera, canvas)
+controls.enableDamping = true
+
 //OrthographicCamera
 // const aspectRatio =sizes.width/sizes.height;
 // const camera = new THREE.OrthographicCamera(-1*aspectRatio,1*aspectRatio,1,-1,0.1,100)
@@ -54,12 +60,14 @@ const renderer = new THREE.WebGLRenderer({
 renderer.setSize(sizes.width, sizes.height)
 
 function tick (){
+    controls.update()
     renderer.render(scene, camera)
     //   camera.position.x =cursor.x *10
     //   camera.position.y =cursor.y*10
-    camera.position.x =Math.sin(cursor.x *Math.PI *2) *3
-    camera.position.z =Math.cos(cursor.x *Math.PI *2) *3
-    camera.position.y = cursor.y *4
+    // camera.position.x =Math.sin(cursor.x *Math.PI *2) *3
+    // camera.position.z =Math.cos(cursor.x *Math.PI *2) *3
+    // camera.position.y = cursor.y *4
+    
       camera.lookAt(mesh.position)
    
     window.requestAnimationFrame(tick)
@@ -67,3 +75,4 @@ function tick (){
     
 }
 tick()
+
