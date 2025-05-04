@@ -2,6 +2,7 @@ import './style.css'
 import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 import * as GUI from 'lil-gui'
+import { color } from 'three/tsl'
 
 
 
@@ -20,6 +21,9 @@ const scene = new THREE.Scene()
 let sizes = {
     width: window.innerWidth,
     height: window.innerHeight
+}
+let parameters ={
+    color: 0xfff000,
 }
 
 // Cursor
@@ -54,7 +58,7 @@ window.addEventListener('dblclick', () => {
  * Object
  */
 const geometry = new THREE.BoxGeometry(1, 1, 1)
-const material = new THREE.MeshBasicMaterial({ color: 0xff0000 })
+const material = new THREE.MeshBasicMaterial({ color: parameters.color})
 const mesh = new THREE.Mesh(geometry, material)
 scene.add(mesh)
 
@@ -87,6 +91,11 @@ cubeFolder.add(mesh.position, 'y')
 
   cubeFolder.add(material, 'wireframe')
   cubeFolder.add(mesh, 'visible')
+
+  cubeFolder.addColor(parameters,'color')
+    .onChange(()=>{
+        material.color.set(parameters.color)
+    })
 
 /**
  * Renderer
