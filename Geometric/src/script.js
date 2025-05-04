@@ -25,9 +25,23 @@ window.addEventListener("mousemove",(dets)=>{
 /**
  * Object
  */
-const geometry = new THREE.BoxGeometry(1, 1, 1)
-const material = new THREE.MeshBasicMaterial({ color: 0xff0000 })
-const mesh = new THREE.Mesh(geometry, material)
+// const geometry = new THREE.BoxGeometry(1, 1, 1)
+// const material = new THREE.MeshBasicMaterial({ color: 0xff0000 })
+// const mesh = new THREE.Mesh(geometry, material)
+// scene.add(mesh)
+
+const positionsArray = new Float32Array([
+    0,0,0,
+    0,1,0,
+    1,0,0
+])
+const positionAtrribute = new THREE.BufferAttribute(positionsArray,3)
+const geometry = new THREE.BufferGeometry()
+geometry.setAttribute('position',positionAtrribute)
+
+
+ const material = new THREE.MeshBasicMaterial({ color: 0xff0000, wireframe: true })
+ const mesh = new THREE.Mesh(geometry, material)
 scene.add(mesh)
 
 /**
