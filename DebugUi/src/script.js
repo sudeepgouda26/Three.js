@@ -2,6 +2,7 @@ import './style.css'
 import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 import * as GUI from 'lil-gui'
+import gsap from 'gsap'
 import { color } from 'three/tsl'
 
 
@@ -9,6 +10,15 @@ import { color } from 'three/tsl'
 // Debug
 const gui = new GUI.GUI()
 const cubeFolder = gui.addFolder('cube');
+window.addEventListener('keydown', (event) => {
+    if (event.key === 'h') {
+        if (gui._hidden) {
+            gui.show();
+        } else {
+            gui.hide();
+        }
+    }
+});
 
 
 // Canvas
@@ -24,6 +34,12 @@ let sizes = {
 }
 let parameters ={
     color: 0xfff000,
+    spin :()=>{
+        gsap.to(mesh.rotation,{
+            duration:1,
+            y:mesh.rotation.y +10
+        })
+    }
 }
 
 // Cursor
@@ -96,7 +112,7 @@ cubeFolder.add(mesh.position, 'y')
     .onChange(()=>{
         material.color.set(parameters.color)
     })
-
+cubeFolder.add(parameters, 'spin')
 /**
  * Renderer
  */
