@@ -1,0 +1,96 @@
+📌 Debug UI in Three.js
+✅ What does “debug UI” mean?
+In Three.js, a debug UI is a small interface (usually a floating panel) that helps you change scene settings live — like colors, positions, camera angles, lighting, etc. — without editing your code every time.
+
+It’s mainly for developers to experiment quickly.
+
+Three.js itself doesn’t provide a built-in debug UI, but most people use an external helper library called:
+
+➡ dat.GUI (old, but popular)
+or
+➡ lil-gui (newer, smaller, better maintained)
+
+Both create a simple, live control panel.
+
+✅ How to install lil-gui (recommended)?
+
+bash
+Copy
+Edit
+npm install lil-gui
+Or, if using a script tag:
+
+html
+Copy
+Edit
+<script src="https://cdn.jsdelivr.net/npm/lil-gui@latest/dist/lil-gui.min.js"></script>
+✅ Basic Example (with lil-gui)
+
+js
+Copy
+Edit
+import * as THREE from 'three';
+import GUI from 'lil-gui';
+
+// Scene, camera, renderer setup
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
+const renderer = new THREE.WebGLRenderer();
+renderer.setSize(window.innerWidth, window.innerHeight);
+document.body.appendChild(renderer.domElement);
+
+// Add a cube
+const geometry = new THREE.BoxGeometry();
+const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
+const cube = new THREE.Mesh(geometry, material);
+scene.add(cube);
+
+// Camera position
+camera.position.z = 5;
+
+// Add GUI
+const gui = new GUI();
+const cubeFolder = gui.addFolder('Cube');
+
+// Add controls
+cubeFolder.add(cube.rotation, 'x', 0, Math.PI * 2);
+cubeFolder.add(cube.rotation, 'y', 0, Math.PI * 2);
+cubeFolder.add(cube.scale, 'x', 0, 3);
+cubeFolder.addColor(material, 'color');
+cubeFolder.open();
+
+// Animation loop
+function animate() {
+    requestAnimationFrame(animate);
+    renderer.render(scene, camera);
+}
+animate();
+✅ What does this do?
+
+You get a small control panel.
+
+You can drag sliders to change the cube’s rotation or scale.
+
+You can pick colors live.
+
+Any changes are shown immediately without reloading the page.
+
+✅ Why use a debug UI?
+
+Speeds up development.
+
+Helps test settings live.
+
+Useful for fine-tuning animations, materials, lighting, camera positions.
+
+✅ Important Tips
+
+Only include lil-gui or dat.GUI during development — remove it from the final production code if not needed.
+
+You can organize controls into folders (like “Cube”, “Lighting”, “Camera”).
+
+You can save or load presets if you want to keep certain settings.
+
+If you want, I can also give:
+✅ Example with dat.GUI (older version)
+✅ Advanced example with lighting or camera controls
