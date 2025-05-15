@@ -5,14 +5,17 @@ import * as GUI from 'lil-gui'
 import gsap from 'gsap'
 import { color } from 'three/tsl'
 
-const image = new Image();
+// const image = new Image();
 
-const texture = new THREE.Texture(image);
-image.onload=()=>{
-  texture.needsUpdate = true;
+// const texture = new THREE.Texture(image);
+// image.onload=()=>{
+//   texture.needsUpdate = true;
     
-}
-image.src="/door.jpg";
+// }
+// image.src="/door.jpg";
+
+const textureLoader = new THREE.TextureLoader();
+const texture = textureLoader.load("/door.jpg");
 
 // Debug
 // const gui = new GUI.GUI()
