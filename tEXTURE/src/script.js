@@ -14,7 +14,22 @@ import { color } from 'three/tsl'
 // }
 // image.src="/door.jpg";
 
-const textureLoader = new THREE.TextureLoader();
+const lodingManager = new THREE.LoadingManager();
+lodingManager.onStart = () => {
+    console.log("Loading started");
+}
+lodingManager.onProgress = () => {
+    console.log("Loading in progress");
+}
+lodingManager.onLoad = () => {          
+    console.log("Loading completed");
+}
+lodingManager.onError = () => {
+    console.log("Loading error");   
+}
+
+
+const textureLoader = new THREE.TextureLoader(lodingManager);
 const texture = textureLoader.load("/door.jpg");
 
 // Debug
